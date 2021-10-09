@@ -1,0 +1,15 @@
+title 0.4 new note
+
+
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note left of Browser:POST sends user's form text
+Server-->Browser: 302/Redirect to /notes
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+Server-->Browser: HTML Code
+Browser->Server: HTML GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->Browser: main.css
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server-->Browser: main.js
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+note left of Browser: json now includes user's new note
+Server-->Browser: json with notes

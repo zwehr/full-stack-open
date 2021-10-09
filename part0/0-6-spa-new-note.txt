@@ -1,0 +1,6 @@
+title 0.6 single page app
+
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note left of Browser: POST contains json with note/timestamp
+Server-->Browser: 201 Created
+note left of Browser: data handled with JS from server, not sent traditional way
