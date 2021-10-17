@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import PersonList from './components/PersonList'
+import AddPersonForm from './components/AddPersonForm'
+import FilterInput from './components/FilterInput'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -13,14 +16,11 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-
     const personObject = {
       name: newName,
       number: newNumber
     }
-
     const personsStringArr = persons.map(person => person.name)
-
     if (personsStringArr.includes(newName)) {
       alert(`${newName} is already included in the phonebook`)
     } else {
@@ -46,24 +46,11 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      filter shown with: <input value={newFilter} onChange={handleFilterChange} />
-      <h2>add new </h2>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input value={newName} onChange={handleNameChange} />
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={handleNumberChange} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <FilterInput newFilter={newFilter} handleFilterChange={handleFilterChange} />
+      <h2>Add New</h2>
+      <AddPersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange} />
       <h2>Numbers</h2>
-      {persons
-        .filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
-        .map(person => <p key={person.name}>{person.name} {person.number}</p>)
-      }
+      <PersonList persons={persons} filter={newFilter} />
     </div>
   )
 }
